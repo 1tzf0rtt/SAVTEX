@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h2><i class="fa-solid fa-chart-line"></i> Texas Live Disaster Monitor</h2>
+    <div class="action-bar">
+        <button class="btn btn-danger" onclick="triggerTestAlert()">
+            <i class="fa-solid fa-bullhorn"></i> TEST EMERGENCY SIREN
+        </button>
+        <button class="btn btn-secondary" onclick="fetchLiveAlerts()">
+            <i class="fa-solid fa-rotate-right"></i> REFRESH NOAA DATA
+        </button>
+    </div>
+</div>
+
+<!-- Key Metric Cards -->
+<div class="metrics-grid">
+    <div class="metric-card card-red">
+        <i class="fa-solid fa-circle-radiation"></i>
+        <div>
+            <h4 id="active-warnings-count">0</h4>
+            <p>Active Severe Warnings</p>
+        </div>
+    </div>
+    <div class="metric-card card-orange">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div>
+            <h4 id="active-watches-count">0</h4>
+            <p>Regional Watches</p>
+        </div>
+    </div>
+    <div class="metric-card card-blue">
+        <i class="fa-solid fa-building-shield"></i>
+        <div>
+            <h4>254</h4>
+            <p>Counties Monitored</p>
+        </div>
+    </div>
+</div>
+
+<!-- Map & Live Feed Section -->
+<div class="map-section">
+    <div class="map-container">
+        <div id="tx-map"></div>
+    </div>
+    <div class="alert-side-panel">
+        <h3><i class="fa-solid fa-rss"></i> Live Texas Feed (NOAA)</h3>
+        <div id="alert-feed-list" class="feed-list">
+            <p class="loading-text">Connecting to NOAA Emergency Data Feed...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

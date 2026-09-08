@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-title">
+    <h2><i class="fa-solid fa-map"></i> Texas Regional Emergency Grid</h2>
+    <p>Select your region to view localized disaster preparedness and emergency declarations.</p>
+</div>
+
+<div class="region-grid">
+    <div class="region-card">
+        <h3>Panhandle & High Plains</h3>
+        <p><strong>Major Cities:</strong> Amarillo, Lubbock</p>
+        <span class="badge badge-safe">Status: Normal</span>
+        <button class="btn btn-outline" onclick="triggerTestAlert('Tornado Warning Simulation - Panhandle')">Simulate Alert</button>
+    </div>
+    <div class="region-card">
+        <h3>North & Central Texas</h3>
+        <p><strong>Major Cities:</strong> Dallas, Fort Worth, Austin, Waco</p>
+        <span class="badge badge-warning">Status: Watch Active</span>
+        <button class="btn btn-outline" onclick="triggerTestAlert('Severe Flood Warning Simulation - Central TX')">Simulate Alert</button>
+    </div>
+    <div class="region-card">
+        <h3>Gulf Coast Region</h3>
+        <p><strong>Major Cities:</strong> Houston, Galveston, Corpus Christi</p>
+        <span class="badge badge-danger">Status: High Risk (Hurricane Zone)</span>
+        <button class="btn btn-outline" onclick="triggerTestAlert('Hurricane Warning Simulation - Gulf Coast')">Simulate Alert</button>
+    </div>
+    <div class="region-card">
+        <h3>South & West Texas</h3>
+        <p><strong>Major Cities:</strong> San Antonio, El Paso, McAllen</p>
+        <span class="badge badge-safe">Status: Normal</span>
+        <button class="btn btn-outline" onclick="triggerTestAlert('Wildfire Warning Simulation - West TX')">Simulate Alert</button>
+    </div>
+</div>
+{% endblock %}

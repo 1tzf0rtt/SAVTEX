@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVTEX | Official Texas State Disaster Command Center</title>
+    
+    <!-- CSS Loading -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Leaflet GIS Map Library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Emergency Siren Audio Indicator Bar -->
+    <div id="emergency-banner" class="emergency-banner hidden">
+        <div class="banner-content">
+            <i class="fa-solid fa-triangle-exclamation fa-beat"></i>
+            <span id="emergency-message">CRITICAL EMERGENCY ALERT ACTIVE IN TEXAS</span>
+            <button id="siren-control-btn" onclick="toggleSiren()">
+                <i class="fa-solid fa-volume-high"></i> MUTE SIREN
+            </button>
+        </div>
+    </div>
+
+    <!-- Official Texas Government Header -->
+    <header class="tx-header">
+        <div class="tx-gov-bar">
+            <span><i class="fa-solid fa-star"></i> OFFICIAL WEBSITE OF THE STATE OF TEXAS DISASTER MANAGEMENT</span>
+            <span class="fema-link">Integrated with <a href="https://www.fema.gov" target="_blank">FEMA</a> & <a href="https://www.noaa.gov" target="_blank">NOAA</a></span>
+        </div>
+        <nav class="navbar">
+            <div class="brand">
+                <i class="fa-solid fa-shield-halved brand-icon"></i>
+                <div class="brand-text">
+                    <h1>SAVTEX</h1>
+                    <p>Texas Emergency Operations Platform</p>
+                </div>
+            </div>
+<ul class="nav-links">
+    <li><a href="{{ url_for('home') }}" class="nav-btn"><i class="fa-solid fa-map-location-dot"></i> Live Map</a></li>
+    <li><a href="{{ url_for('alerts') }}" class="nav-btn"><i class="fa-solid fa-bell"></i> Regional Alerts</a></li>
+    <li><a href="{{ url_for('prepare') }}" class="nav-btn"><i class="fa-solid fa-book-medical"></i> Preparedness</a></li>
+    <li><a href="{{ url_for('contacts') }}" class="nav-btn"><i class="fa-solid fa-phone-flip"></i> Contacts</a></li>
+    
+    {% if current_user.is_authenticated %}
+        <li class="user-badge"><i class="fa-solid fa-user-check"></i> {{ current_user.username }} ({{ current_user.county }} Co.)</li>
+        <li><a href="{{ url_for('logout') }}" class="nav-btn btn-logout"><i class="fa-solid fa-power-off"></i> Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}" class="nav-btn btn-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>
+        <li><a href="{{ url_for('signup') }}" class="nav-btn btn-signup"><i class="fa-solid fa-user-plus"></i> Register</a></li>
+    {% endif %}
+</ul>
+        </nav>
+    </header>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="main-container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Official Footer -->
+    <footer class="tx-footer">
+        <div class="footer-grid">
+            <div>
+                <h3>SAVTEX Texas Command</h3>
+                <p>Providing real-time disaster alerts, evacuation tracking, and emergency coordination across all 254 Texas counties.</p>
+            </div>
+            <div>
+                <h3>Federal Agencies</h3>
+                <ul>
+                    <li><a href="https://www.fema.gov" target="_blank">FEMA.gov</a></li>
+                    <li><a href="https://www.noaa.gov" target="_blank">NOAA Weather Service</a></li>
+                    <li><a href="https://www.tdem.texas.gov" target="_blank">Texas Division of Emergency Management</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>System Status</h3>
+                <p><i class="fa-solid fa-circle-check status-online"></i> NOAA Data Stream: Active</p>
+                <p><i class="fa-solid fa-circle-check status-online"></i> Texas Siren Grid: Armed</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 State of Texas | SAVTEX Disaster Preparedness Initiative</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Logic -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

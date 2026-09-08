@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <i class="fa-solid fa-user-shield auth-icon"></i>
+            <h2>Create Area Account</h2>
+            <p>Register for localized siren alerts in your Texas county</p>
+        </div>
+
+        <form action="{{ url_for('signup') }}" method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="username"><i class="fa-solid fa-user"></i> Full Name / Officer ID</label>
+                <input type="text" id="username" name="username" required placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+                <label for="email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="name@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="county"><i class="fa-solid fa-location-dot"></i> Your Texas County / Region</label>
+                <select id="county" name="county" required>
+                    <option value="" disabled selected>Select Your Texas County</option>
+                    <option value="Harris">Harris (Houston Area)</option>
+                    <option value="Dallas">Dallas (DFW Area)</option>
+                    <option value="Travis">Travis (Austin Area)</option>
+                    <option value="Bexar">Bexar (San Antonio Area)</option>
+                    <option value="Tarrant">Tarrant (Fort Worth Area)</option>
+                    <option value="El Paso">El Paso</option>
+                    <option value="Lubbock">Lubbock (Panhandle)</option>
+                    <option value="Cameron">Cameron (South Texas)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><i class="fa-solid fa-lock"></i> Password</label>
+                <input type="password" id="password" name="password" required placeholder="Create strong password">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full"><i class="fa-solid fa-user-plus"></i> Register for Siren Alerts</button>
+        </form>
+
+        <p class="auth-footer">Already registered? <a href="{{ url_for('login') }}">Sign In</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-title">
+    <h2><i class="fa-solid fa-phone-volume"></i> Official Emergency Contacts</h2>
+</div>
+
+<div class="table-container">
+    <table class="tx-table">
+        <thead>
+            <tr>
+                <th>Agency</th>
+                <th>Responsibility</th>
+                <th>Direct Hotline</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Texas Emergency Operations</strong></td>
+                <td>Statewide Emergency Response</td>
+                <td><a href="tel:911" class="phone-link">911</a></td>
+            </tr>
+            <tr>
+                <td><strong>Texas Division of Emergency Management (TDEM)</strong></td>
+                <td>State Disaster Assistance</td>
+                <td>(512) 424-2208</td>
+            </tr>
+            <tr>
+                <td><strong>FEMA Region 6 (Texas)</strong></td>
+                <td>Federal Disaster Relief</td>
+                <td>1-800-621-3362</td>
+            </tr>
+            <tr>
+                <td><strong>Texas Road Conditions (TxDOT)</strong></td>
+                <td>Evacuation Routes & Highway Closures</td>
+                <td>1-800-452-9292</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
